@@ -9,29 +9,900 @@
       name="description"
       content="Web site created using create-react-app"
     />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="index.css" />
+
     <title>React App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <header class="header">
+      <div class="music-player">
+        <img src="assets/player-icon.png" />
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+        <div class="music-player-icons">
+          <i class="fa-solid fa-backward music-player-icon-sm"></i>
+          <i class="fa-regular fa-circle-play music-player-icon"></i>
+          <i class="fa-solid fa-forward music-player-icon-sm"></i>
+          <i class="fa-regular fa-heart music-player-icon-sm"></i>
+        </div>
+      </div>
+
+      <a class="logo" href="#">
+        <img src="assets/logo.png" />
+      </a>
+
+      <div class="nav">
+        <a href="/search.html">
+          <i class="fa-sharp fa-solid fa-magnifying-glass nav-item nav-icon">
+          </i>
+        </a>
+        <div class="nav-links">
+          <a class="nav-item nav-link" href="#">Home</a>
+          <a class="nav-item nav-link" href="#">Live</a>
+          <a class="nav-item nav-link" href="#">Music</a>
+          <a class="nav-item nav-link" href="#">Charts</a>
+          <a class="nav-item nav-link" href="#">Events</a>
+          <a class="nav-item nav-link" href="#">Features</a>
+        </div>
+        <img
+          class="nav-user"
+          src="https://lastfm.freetls.fastly.net/i/u/avatar42s/818148bf682d429dc215c1705eb27b98.png"
+        />
+      </div>
+    </header>
+
+    <div class="container">
+      <h1 class="title">Music</h1>
+      <h3 class="sub-title">Hot right now</h3>
+
+      <div class="wrapper">
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hot-item">
+          <img
+            class="hot-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/6aec27b41e960151cbb9366482b1fdee.jpg"
+          />
+          <div class="hot-item-wrapper">
+            <a class="content-link content-title" href="#"> The Weekend </a>
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">rnb</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">electronic</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">canadian</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-title">Popular tracks</h3>
+
+      <div class="wrapper">
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="popular-item">
+          <img
+            class="popular-item-image"
+            src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"
+          />
+          <div class="popular-item-wrapper">
+            <a class="content-link content-title" href="#"> Butter </a>
+            <a class="content-link content-sub-title" href="#"> BTS </a>
+
+            <ul>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">bts</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">butter</a>
+              </li>
+              <i class="fa-solid fa-circle tag-item-dot"> </i>
+              <li class="tag-item">
+                <a class="tag-item-link" href="#">pop</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="wrapper footer-wrapper-ve">
+        <div class="footer-link-item">
+          <span class="footer-link-title">company</span>
+          <a class="footer-link" href="#">About Last.fm</a>
+          <a class="footer-link" href="#">Contact Us</a>
+          <a class="footer-link" href="#">Jobs</a>
+        </div>
+
+        <div class="footer-link-item">
+          <span class="footer-link-title">help</span>
+          <a class="footer-link" href="#">Track My Music</a>
+          <a class="footer-link" href="#">Community Support</a>
+          <a class="footer-link" href="#">Community Guidelines</a>
+          <a class="footer-link" href="#">Help</a>
+        </div>
+
+        <div class="footer-link-item">
+          <span class="footer-link-title">goodies</span>
+          <a class="footer-link" href="#">Download Scrobbler</a>
+          <a class="footer-link" href="#">Developer API</a>
+          <a class="footer-link" href="#">Free Music Downloads</a>
+          <a class="footer-link" href="#">Merchandise</a>
+        </div>
+
+        <div class="footer-link-item">
+          <span class="footer-link-title">account</span>
+          <a class="footer-link" href="#">Inbox</a>
+          <a class="footer-link" href="#">Settings</a>
+          <a class="footer-link" href="#">Last.fm Pro</a>
+          <a class="footer-link" href="#">Logout</a>
+        </div>
+
+        <div class="footer-link-item">
+          <span class="footer-link-title">follow us</span>
+          <a class="footer-link" href="#">Facebook</a>
+          <a class="footer-link" href="#">Twitter</a>
+          <a class="footer-link" href="#">Instagram</a>
+          <a class="footer-link" href="#">YouTube</a>
+        </div>
+      </div>
+
+      <div class="footer-separator"></div>
+
+      <div class="wrapper footer-wrapper-h">
+        <div class="footer-wrapper-vb">
+          <div class="footer-geo">
+            <ul class="footer-lang">
+              <a href="#" class="footer-lang-item footer-lang-item-selected">
+                English
+              </a>
+              <a href="#" class="footer-lang-item">Deutschaktuelle</a>
+              <a href="#" class="footer-lang-item">Sprache</a>
+              <a href="#" class="footer-lang-item">Español</a>
+              <a href="#" class="footer-lang-item">Français</a>
+              <a href="#" class="footer-lang-item">Italiano</a>
+              <a href="#" class="footer-lang-item">日本語</a>
+              <a href="#" class="footer-lang-item">Polski</a>
+              <a href="#" class="footer-lang-item">Português</a>
+              <a href="#" class="footer-lang-item">Русский</a>
+              <a href="#" class="footer-lang-item">Svenska</a>
+              <a href="#" class="footer-lang-item">Türkçe</a>
+              <a href="#" class="footer-lang-item">简体中文</a>
+            </ul>
+
+            <a class="footer-timezone" href="#">
+              <span>Timezone:</span>
+              <span class="footer-timezone-name">Europe/Moscow</span>
+            </a>
+          </div>
+
+          <div class="footer-logo">
+            <p class="footer-logo-text">Audioscrobbler</p>
+            <img class="footer-logo-image" src="assets/footer-logo.png" />
+          </div>
+        </div>
+
+        <div>
+          <a class="footer-link-sm" href="#">CBS Interactive</a>
+          <small class="footer-text-sm">
+            © 2022 Last.fm Ltd. All rights reserved
+          </small>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Terms of Use</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Privacy Policy</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Legal Policies</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Cookies Policy</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Cookie Information</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Jobs at ViacomCBS</a>
+          <i class="fa-solid fa-circle footer-item-dot"> </i>
+          <a class="footer-link-sm" href="#">Last.fm Music</a>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
