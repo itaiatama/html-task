@@ -1,22 +1,25 @@
 console.log("Hello");
 const URL = "http://www.last.fm/api/auth/?api_key=fc7e1572ebc98d1718f5aba67915fe76";
 
-const origin = window.location.href;
-
-if (!origin.includes("token=")) {
+// Ugly solution to token generation will be fixed later using react. Maybe.
+if (!window.location.href.includes("token=")) {
   window.location.replace(URL);
 }
 
+// Not so private application key
 const KEY = "fc7e1572ebc98d1718f5aba67915fe76";
+// Query to find main-content element
 const content = document.getElementById("main-content");
+// Query to find header element
 const header = document.getElementById("header");
 
-const tags = [
-  { name: "1", link: "1" },
-  { name: "2", link: "2" },
-  { name: "3", link: "3" },
-];
-
+/**
+ * Constructor for abstract tag element
+ * @constructor
+ * @param  {object}  tag   - JS object with url and name attributes
+ * @param  {boolean} last  - indicate that tag last in sequence
+ * @return {string}        - static html to append/replace in element
+ */
 const createTagItem = (tag, last) => {
   return `
       <li class="tag-item">
@@ -26,6 +29,12 @@ const createTagItem = (tag, last) => {
       `;
 };
 
+/**
+ * Constructor for hot section item element
+ * @constructor
+ * @param  {object} artist - JS object with url, image, mbid and name attributes
+ * @return {string}        - static html to append/replace in element
+ */
 const createHotItem = (artist) => {
   return `
     <div class="hot-item">
@@ -43,6 +52,12 @@ const createHotItem = (artist) => {
   `;
 };
 
+/**
+ * Constructor for popular section item element
+ * @constructor
+ * @param  {object} track - JS object with url, image, artist and name attributes
+ * @return {string}       - static html to append/replace in element
+ */
 const createPopularItem = (track) => {
   return `
   <div class="popular-item">
@@ -60,6 +75,11 @@ const createPopularItem = (track) => {
   `;
 };
 
+/**
+ * Function to fetch and map data about artist top 3 tags from last-fm API
+ * @param  {string} mbid - the artist unique id
+ * @return {promise}     - mapped data to generate static html from
+ */
 const fetchTagsById = async (mbid) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&mbid=${encodeURIComponent(
@@ -75,9 +95,15 @@ const fetchTagsById = async (mbid) => {
             return { name: tag.name, url: tag.url };
           })
     )
-    .catch((error) => console.error(error));
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map data about track top 3 tags from last-fm API
+ * @param  {string} artist - the artist name
+ * @param  {string} track  - the track name
+ * @return {promise}       - mapped data to generate static html from
+ */
 const fetchTagsNames = async (artist, track) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=track.gettoptags&artist=${encodeURIComponent(
@@ -93,9 +119,13 @@ const fetchTagsNames = async (artist, track) => {
             return { name: tag.name, url: tag.url };
           })
     )
-    .catch((error) => console.error(error));
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map data about top 12 artist from last-fm API
+ * @return {promise} - mapped data to generate static html from
+ */
 const fetchArtist = async () => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${KEY}&format=json&limit=12`
@@ -112,10 +142,14 @@ const fetchArtist = async () => {
         };
       })
     )
-
-    .catch((error) => console.error(error));
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fill html of hot items section
+ * @param  {element} items - html element to fill
+ * @return {void}
+ */
 const fillHotItems = (items) => {
   fetchArtist()
     .then((data) => {
@@ -124,17 +158,32 @@ const fillHotItems = (items) => {
     .finally(fillHotItemsTags);
 };
 
+/**
+ * Function to fill html of hot items tags
+ * @return {void}
+ */
 const fillHotItemsTags = () => {
   const elements = [...document.querySelectorAll(".hot-artist-tags")];
-  elements.forEach((item) => {
-    fetchTagsById(item.id).then((data) => {
-      item.innerHTML = data
-        .map((tag, index) => createTagItem(tag, index + 1 === data.length))
-        .join(" ");
-    });
+  let tags = [];
+  elements.forEach((item, index) => {
+    fetchTagsById(item.id)
+      .then((data) => {
+        tags[index] = data
+          .map((tag, index) => createTagItem(tag, index + 1 === data.length))
+          .join(" ");
+      })
+      .finally(() => {
+        if (tags.length === elements.length) {
+          tags.map((data, index) => (elements[index].innerHTML = data));
+        }
+      });
   });
 };
 
+/**
+ * Function to fetch and map data about top 12 tracks from last-fm API
+ * @return {promise} - mapped data to generate static html from
+ */
 const fetchTracks = async () => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${KEY}&format=json&limit=18`
@@ -151,9 +200,14 @@ const fetchTracks = async () => {
         };
       })
     )
-    .catch((error) => console.error(error));
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map searched data about 8 artists from last-fm API
+ * @param  {string} artist - search artist name
+ * @return {promise}       - mapped data to generate static html from
+ */
 const fetchArtistSearch = async (artist) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${encodeURIComponent(
@@ -165,9 +219,15 @@ const fetchArtistSearch = async (artist) => {
       data.results.artistmatches.artist.map((a) => {
         return { name: a.name, image: a.image[1]["#text"], listeners: a.listeners, url: a.url };
       })
-    );
+    )
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map searched data about 8 albums from last-fm API
+ * @param  {string} album - search album name
+ * @return {promise}      - mapped data to generate static html from
+ */
 const fetchAlbumSearch = async (album) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=album.search&album=${encodeURIComponent(
@@ -184,9 +244,15 @@ const fetchAlbumSearch = async (album) => {
           url: a.url,
         };
       })
-    );
+    )
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map searched data about 8 tracks from last-fm API
+ * @param  {string} track - search track name
+ * @return {promise}      - mapped data to generate static html from
+ */
 const fetchTrackSearch = async (track) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${encodeURIComponent(
@@ -201,9 +267,16 @@ const fetchTrackSearch = async (track) => {
           artist: i.artist,
         };
       })
-    );
+    )
+    .catch((error) => alert(error));
 };
 
+/**
+ * Function to fetch and map full data about specific track from last-fm API
+ * @param  {string} artist - the artist name
+ * @param  {string} track  - the track name
+ * @return {promise}       - mapped data to generate static html from
+ */
 const fetchTrackDuration = async (artist, track) => {
   return await fetch(
     `http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=${KEY}&artist=${encodeURIComponent(
@@ -219,9 +292,16 @@ const fetchTrackDuration = async (artist, track) => {
         url: data.track.url,
         image: data.track.album.image[1]["#text"],
       };
-    });
+    })
+    .catch((error) => alert(error));
 };
 
+/**
+ * Constructor for searched artist element
+ * @constructor
+ * @param  {object} search - JS object with url, image, listeners and name attributes
+ * @return {string}        - static html to append/replace in element
+ */
 const createSearchArtist = (search) => {
   return `<div class="search-image-item">
   <img
@@ -236,6 +316,12 @@ const createSearchArtist = (search) => {
 </div>`;
 };
 
+/**
+ * Constructor for searched album element
+ * @constructor
+ * @param  {object} search - JS object with url, image, artist and name attributes
+ * @return {string}        - static html to append/replace in element
+ */
 const createSearchAlbum = (search) => {
   return ` <div class="search-image-item">
   <img
@@ -254,11 +340,19 @@ const createSearchAlbum = (search) => {
 </div>`;
 };
 
-function padTo2Digits(num) {
-  return num.toString().padStart(2, "0");
-}
+/**
+ * Function to pad 2 digits of a number
+ * @param  {number} num - number to pad
+ * @return {string}     - string of padded number
+ */
+const padTo2Digits = (num) => num.toString().padStart(2, "0");
 
-function convertMsToHM(milliseconds) {
+/**
+ * Function to convert and format milliseconds to MM:SS
+ * @param  {number} milliseconds - number of milliseconds
+ * @return {string}     - string of converted and formatted time
+ */
+const convertMsToMS = (milliseconds) => {
   let seconds = Math.floor(milliseconds / 1000);
   let minutes = Math.floor(seconds / 60);
   let hours = Math.floor(minutes / 60);
@@ -269,8 +363,14 @@ function convertMsToHM(milliseconds) {
   hours = hours % 24;
 
   return `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
-}
+};
 
+/**
+ * Constructor for searched track element
+ * @constructor
+ * @param  {object} search - JS object with url, image, artist, duration and name attributes
+ * @return {string}        - static html to append/replace in element
+ */
 const createSearchTrack = (search) => {
   return `
   <div class="search-track">
@@ -301,25 +401,80 @@ const createSearchTrack = (search) => {
       ></i>
     </button>
 
-    <span class="search-track-time">${convertMsToHM(search.duration)}</span>
+    <span class="search-track-time">${convertMsToMS(search.duration)}</span>
   </div>
   </div>
   `;
 };
 
-const fillArtistSearch = (items, text) => {
+/**
+ * Function to capitalize word
+ * @param  {string} string - string to capitalize
+ * @return {string}        - capitalized string
+ */
+const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+/**
+ * Function to fill html of search item by provided name
+ * @param  {string} name   - name of section
+ * @param  {string} text   - search text
+ * @return {object}        - inner html object to append data
+ */
+const fillSearchItem = (name, text) => {
+  document.getElementById("search-content").insertAdjacentHTML(
+    "beforeend",
+    `
+    <div class="search-section">
+    <a class="search-sub-title" href="https://www.last.fm/search/${name}?q=${text}">${capitalize(
+      name
+    )}</a>
+    <div id="search-${name}-section" class="search-image-block"></div>
+    <div class="search-more-item">
+      <a class="search-more-link" href="https://www.last.fm/search/${name}?q=${text}">More ${name}</a>
+      <i class="fa-solid fa-chevron-right search-more-icon"></i>
+    </div>
+    </div>
+  `
+  );
+
+  return document.getElementById(`search-${name}-section`);
+};
+
+/**
+ * Function to fill html of search artists section
+ * @param  {string} text - search text
+ * @return {void}
+ */
+const fillArtistSearch = (text) => {
+  const parent = fillSearchItem("artists", text);
   fetchArtistSearch(text).then((data) => {
-    items.innerHTML = data.map((artist) => createSearchArtist(artist)).join(" ");
+    parent.innerHTML = data.map((artist) => createSearchArtist(artist)).join(" ");
   });
 };
 
-const fillAlbumSearch = (items, text) => {
+/**
+ * Function to fill html of search albums section
+ * @param  {string} text - search text
+ * @return {void}
+ */
+const fillAlbumSearch = (text) => {
+  const parent = fillSearchItem("albums", text);
+
   fetchAlbumSearch(text).then((data) => {
-    items.innerHTML = data.map((album) => createSearchAlbum(album)).join(" ");
+    parent.innerHTML = data.map((album) => createSearchAlbum(album)).join(" ");
   });
 };
 
-const fillTrackSearch = (items, text) => {
+/**
+ * Function to fill html of search tracks section
+ * @param  {string} text - search text
+ * @return {void}
+ */
+const fillTrackSearch = (text) => {
+  const parent = fillSearchItem("tracks", text);
+
   let search = [];
   let tracks = [];
   fetchTrackSearch(text)
@@ -328,31 +483,48 @@ const fillTrackSearch = (items, text) => {
     })
     .finally(() => {
       search.map((track) => {
-        fetchTrackDuration(track.artist, track.name)
-          .then((data) => {
-            tracks.push(data);
-          })
-          .finally(() => {
-            items.innerHTML = tracks.map((i) => createSearchTrack(i)).join(" ");
-          });
+        if (track !== undefined)
+          fetchTrackDuration(track.artist, track.name)
+            .then((data) => {
+              if (data !== undefined) tracks.push(data);
+            })
+            .finally(() => {
+              parent.innerHTML = tracks.map((i) => createSearchTrack(i)).join(" ");
+            });
       });
     });
 };
 
+/**
+ * Function to fill html of popular item tags
+ * @return {void}
+ */
 const fillPopularItemsTags = () => {
+  let tags = [];
   const elements = [...document.querySelectorAll(".popular-track-tags")];
-  elements.forEach((item) => {
+  elements.forEach((item, index) => {
     const artist = item.id.split(`&`)[0].trim();
     const track = item.id.split(`&`)[1].trim();
 
-    fetchTagsNames(artist, track).then((data) => {
-      item.innerHTML = data
-        .map((tag, index) => createTagItem(tag, index + 1 === data.length))
-        .join(" ");
-    });
+    fetchTagsNames(artist, track)
+      .then((data) => {
+        tags[index] = data
+          .map((tag, index) => createTagItem(tag, index + 1 === data.length))
+          .join(" ");
+      })
+      .finally(() => {
+        if (tags.length === elements.length) {
+          tags.map((data, index) => (elements[index].innerHTML = data));
+        }
+      });
   });
 };
 
+/**
+ * Function to fill html of popular items
+ * @param  {object} items - element to append/replace static html
+ * @return {void}
+ */
 const fillPopularItems = (items) => {
   fetchTracks()
     .then((data) => {
@@ -361,9 +533,12 @@ const fillPopularItems = (items) => {
     .finally(fillPopularItemsTags);
 };
 
+/**
+ * Function to fill main content static html
+ * @return {void}
+ */
 const createMainContent = () => {
   content.innerHTML = `
-  
   <div class="container">
   <h1 class="title">Music</h1>
   <h3 class="sub-title">Hot right now</h3>
@@ -374,6 +549,10 @@ const createMainContent = () => {
   `;
 };
 
+/**
+ * Function to fill alternative content static html
+ * @return {void}
+ */
 const createAltContent = (text) => {
   content.innerHTML = `
   <div class="filler"></div>
@@ -396,7 +575,7 @@ const createAltContent = (text) => {
 
       <div class="container">
         <div class="search-wrapper">
-          <div class="search-content-left">
+          <div id="search-content" class="search-content-left">
             <form class="search-form">
               <input
                 class="search-input"
@@ -414,39 +593,7 @@ const createAltContent = (text) => {
                 ></i>
               </button>
             </form>
-
-            <div class="search-section">
-              <a class="search-sub-title" href="https://www.last.fm/search/artists?q=${text}">Artists</a>
-              <div id="search-artists-section" class="search-image-block"></div>
-              <div class="search-more-item">
-                <a class="search-more-link" href="https://www.last.fm/search/artists?q=${text}">More artists</a>
-                <i class="fa-solid fa-chevron-right search-more-icon"></i>
-              </div>
-            </div>
-
-            <div class="search-section">
-              <a class="search-sub-title" href="https://www.last.fm/search/albums?q=${text}">Albums</a>
-
-              <div id="search-albums-section" class="search-image-block"></div>
-
-              <div class="search-more-item">
-                <a class="search-more-link" href="https://www.last.fm/search/albums?q=${text}">More albums</a>
-                <i class="fa-solid fa-chevron-right search-more-icon"></i>
-              </div>
-            </div>
-
-            <div class="search-section">
-              <a class="search-sub-title" href="https://www.last.fm/search/tracks?q=${text}">Tracks</a>
-
-              <div id="search-tracks-section" class="search-image-block"></div>
-              
-              <div class="search-more-item">
-                <a class="search-more-link" href="https://www.last.fm/search/tracks?q=${text}">More tracks</a>
-                <i class="fa-solid fa-chevron-right search-more-icon"></i>
-              </div>
-            </div>
-          </div>
-
+        </div>
           <div class="search-content-right">
             <div>
               <span class="search-ad-text">Don't want to see ads?</span>
@@ -458,6 +605,10 @@ const createAltContent = (text) => {
     </main>`;
 };
 
+/**
+ * Function to fill main header static html
+ * @return {void}
+ */
 const createMainHeader = () => {
   header.innerHTML = `<div class="music-player">
   <img src="assets/player-icon.png" />
@@ -493,6 +644,10 @@ const createMainHeader = () => {
   </div>`;
 };
 
+/**
+ * Function to fill alternative header static html
+ * @return {void}
+ */
 const createAltHeader = () => {
   header.innerHTML = `<div class="nav-alt">
   <input
@@ -513,6 +668,11 @@ const createAltHeader = () => {
 createMainHeader();
 createMainContent();
 
+/**
+ * Function to toggle content between alt and normal depending on seach button click
+ * @param  {object} button - button to toggle search
+ * @return {void}
+ */
 const showSearch = (button) => {
   button.addEventListener("click", () => {
     createAltHeader();
@@ -522,13 +682,9 @@ const showSearch = (button) => {
       const text = document.getElementById("nav-search-input").value;
       createAltContent(text);
       createMainHeader();
-      console.log(text);
-      const searchArtists = document.getElementById("search-artists-section");
-      fillArtistSearch(searchArtists, text);
-      const searchAlbums = document.getElementById("search-albums-section");
-      fillAlbumSearch(searchAlbums, text);
-      const searchTracks = document.getElementById("search-tracks-section");
-      fillTrackSearch(searchTracks, text);
+      fillArtistSearch(text);
+      fillAlbumSearch(text);
+      fillTrackSearch(text);
     });
 
     cancel.addEventListener("click", () => {
@@ -540,6 +696,7 @@ const showSearch = (button) => {
 
 const hotItemsSection = document.getElementById("hot-items-section");
 const popularItemsSection = document.getElementById("popular-items-section");
+
 fillHotItems(hotItemsSection);
 fillPopularItems(popularItemsSection);
 showSearch(document.getElementById("nav-search"));
