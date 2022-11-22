@@ -1,7 +1,6 @@
-console.log("Hello");
 const URL = "http://www.last.fm/api/auth/?api_key=fc7e1572ebc98d1718f5aba67915fe76";
 
-// Ugly solution to token generation will be fixed later using react. Maybe.
+// FIXME: Ugly solution to token generation will be fixed later using react. Maybe.
 if (!window.location.href.includes("token=")) {
   window.location.replace(URL);
 }
@@ -163,20 +162,15 @@ const fillHotItems = (items) => {
  * @return {void}
  */
 const fillHotItemsTags = () => {
+  let promises = [];
   const elements = [...document.querySelectorAll(".hot-artist-tags")];
-  let tags = [];
   elements.forEach((item, index) => {
-    fetchTagsById(item.id)
-      .then((data) => {
-        tags[index] = data
-          .map((tag, index) => createTagItem(tag, index + 1 === data.length))
-          .join(" ");
-      })
-      .finally(() => {
-        if (tags.length === elements.length) {
-          tags.map((data, index) => (elements[index].innerHTML = data));
-        }
-      });
+    promises[index] = fetchTagsById(item.id).then((data) => {
+      return data.map((tag, index) => createTagItem(tag, index + 1 === data.length)).join(" ");
+    });
+  });
+  Promise.all(promises).then((values) => {
+    values.map((data, index) => (elements[index].innerHTML = data));
   });
 };
 
@@ -500,23 +494,17 @@ const fillTrackSearch = (text) => {
  * @return {void}
  */
 const fillPopularItemsTags = () => {
-  let tags = [];
+  let promises = [];
   const elements = [...document.querySelectorAll(".popular-track-tags")];
   elements.forEach((item, index) => {
     const artist = item.id.split(`&`)[0].trim();
     const track = item.id.split(`&`)[1].trim();
-
-    fetchTagsNames(artist, track)
-      .then((data) => {
-        tags[index] = data
-          .map((tag, index) => createTagItem(tag, index + 1 === data.length))
-          .join(" ");
-      })
-      .finally(() => {
-        if (tags.length === elements.length) {
-          tags.map((data, index) => (elements[index].innerHTML = data));
-        }
-      });
+    promises[index] = fetchTagsNames(artist, track).then((data) => {
+      return data.map((tag, index) => createTagItem(tag, index + 1 === data.length)).join(" ");
+    });
+  });
+  Promise.all(promises).then((values) => {
+    values.map((data, index) => (elements[index].innerHTML = data));
   });
 };
 
