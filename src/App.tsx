@@ -1,23 +1,31 @@
-import React from 'react';
+import Header from "./components/header/Header";
+import Main from "./components/content/Main";
+import Footer from "./components/footer/Footer";
+import { KEY } from "./key";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+import { useState } from "react";
 
-// export default App;
+const App = () => {
+  const [search, setSearch] = useState<string>("");
+
+  const URL = `http://www.last.fm/api/auth/?api_key=${KEY}`;
+
+  // FIXME: Ugly solution to token generation will be fixed later using react. Maybe.
+  if (!window.location.href.includes("token=")) {
+    window.location.replace(URL);
+  }
+
+  return (
+    <div className="App">
+      <Header
+        setSearch={(value: string | undefined) => {
+          if (value) setSearch(value);
+        }}
+      />
+      <Main search={search} />
+      <Footer />
+    </div>
+  );
+};
+
+export default App;

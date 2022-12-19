@@ -1,0 +1,88 @@
+/* =============== COMMON ============== */
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Barlow, Open Sans, Lucida Grande, Helvetica Neue, Helvetica, Arial, Sans-serif;
+  font-size: 14px;
+}
+
+.container {
+  margin: auto;
+  padding: 0px 20px;
+  max-width: 1230px;
+  transform: translate(0, 58px);
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1270px;
+  margin: auto;
+  justify-content: space-between;
+  gap: 20px 0px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.title {
+  font-size: 48px;
+  text-align: center;
+  padding: 20px 0px;
+  padding-top: 48px;
+}
+
+.sub-title {
+  margin-top: 30px;
+  font-size: 18px;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.sub-title::after {
+  display: flex;
+  content: "";
+  width: 50px;
+  margin: auto;
+  margin-top: 15px;
+  border: 1px solid #b90000;
+}
+
+.content-link {
+  width: fit-content;
+  color: #000000;
+  text-decoration: none;
+}
+
+.content-link:hover {
+  text-decoration: underline;
+}
+
+.content-title {
+  font-weight: 600;
+}
+
+.content-sub-title {
+  font-size: 14px;
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-item-link {
+  color: #999999;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.tag-item-link:hover {
+  text-decoration: underline;
+}
+
+.tag-item-dot {
+  font-size: 0.2rem;
+  color: #999999;
+  transform: translate(0, -2px);
+  padding: 0px 2px;
+}
