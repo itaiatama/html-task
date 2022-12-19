@@ -1,0 +1,134 @@
+/*=============== FOOTER ===============*/
+
+.footer {
+  transform: translate(0, 58px);
+  background: #111111;
+  margin-top: 40px;
+  margin: auto;
+}
+
+.footer-wrapper-ve {
+  max-width: 1270px;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footer-wrapper-vb {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-wrapper-h {
+  flex-direction: column;
+  max-width: 1270px;
+  padding: 20px 20px;
+  justify-content: space-evenly;
+}
+
+.footer-separator {
+  width: 100%;
+  border-bottom: 1px solid #303030;
+}
+
+.footer-link-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 30px 0px;
+}
+
+.footer-link-title {
+  color: #666666;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.footer-link {
+  color: #ffffff;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+.footer-geo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-lang {
+  display: flex;
+  gap: 10px;
+}
+
+.footer-lang-item {
+  color: #666666;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-lang-item:hover {
+  text-decoration: underline;
+}
+
+.footer-lang-item-selected {
+  color: #ffffff;
+}
+
+.footer-timezone {
+  color: #666666;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.footer-timezone:hover {
+  text-decoration: underline;
+}
+
+.footer-timezone-name {
+  color: #ffffff;
+}
+
+.footer-link-sm {
+  font-size: 12px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer-link-sm:hover {
+  text-decoration: underline;
+}
+
+.footer-text-sm {
+  font-size: 12px;
+  color: #666666;
+  text-decoration: none;
+}
+
+.footer-item-dot {
+  color: #666666;
+  font-size: 0.15rem;
+  transform: translate(0px, -2px);
+  padding: 0px 2px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.footer-logo-text {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.footer-logo-image {
+  width: 40px;
+  padding-left: 40px;
+}

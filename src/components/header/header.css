@@ -1,0 +1,130 @@
+/* =============== HAEDER ============== */
+
+.header {
+  width: 100%;
+  height: 58px;
+  min-width: 600px;
+  position: fixed;
+  display: flex;
+  background-color: #000000;
+  border-top: 2px solid #303030;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+/* =============== MUSIC PLAYER ============== */
+
+.music-player {
+  display: flex;
+}
+
+.music-player-icons {
+  display: flex;
+  width: 120px;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.music-player-icon-md {
+  font-size: 2.5rem;
+  color: #666666;
+}
+
+.music-player-icon-sm {
+  font-size: 1.2rem;
+  color: #666666;
+}
+
+/* =============== LOGO ============== */
+
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  align-self: center;
+}
+
+/* =============== NAVIGATION ============== */
+
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: nowrap;
+  color: aliceblue;
+  align-items: center;
+  margin: 0px 20px;
+}
+
+.nav-item {
+  color: #d6d6d6;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-item {
+  color: #d6d6d6;
+}
+
+.nav-link {
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+  margin: 0px 15px;
+  cursor: pointer;
+}
+
+.nav-icon-alt {
+  font-size: 2.2rem;
+  margin: 0px 15px;
+  cursor: pointer;
+  color: #666666;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+.nav-user {
+  width: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.nav-search-button {
+  background-color: transparent;
+  border: none;
+}
+
+.nav-search-button-alt {
+  background-color: #b90000;
+  width: 60px;
+  border: none;
+}
+
+.nav-search-input {
+  width: 100%;
+  background-color: transparent;
+  color: #e4e4e4;
+  font-size: 20px;
+  padding: 18px 20px;
+  border: none;
+  flex: 1;
+}
+
+.nav-search-input:focus {
+  outline: none;
+}
+
+.nav-alt {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}

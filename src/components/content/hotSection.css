@@ -1,0 +1,22 @@
+/* =============== HOT SECTION ============== */
+
+.hot-item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 15%;
+}
+
+.hot-item-image {
+  width: 100%;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 10px;
+}
+
+.hot-item-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
