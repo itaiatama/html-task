@@ -3,14 +3,13 @@ import PopularSection from "./PopularSection";
 import SearchItem from "./SearchItem";
 
 interface MainProps {
-  isSearch: boolean;
-  text: string;
+  search: string;
 }
 
 const Main = (props: MainProps) => {
   {
-    return props.isSearch ? (
-      <SearchItem text={props.text} />
+    return props.search ? (
+      <SearchItem text={props.search} />
     ) : (
       <div className="container">
         <h1 className="title">Music</h1>

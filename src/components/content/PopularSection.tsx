@@ -2,25 +2,24 @@ import { useEffect, useState } from "react";
 import { Tag, Track, fetchTracks, fetchTagsNames } from "../API";
 import PopularItem from "./PopularItem";
 
+import "./popularSection.css";
+
 const PopularSection = () => {
   const [data, setData] = useState<Track[]>([]);
 
   useEffect(() => {
-    let artists: Promise<Track[]>;
-    artists = fetchTracks().then((data: Track[]) => data);
+    fetchTracks()
+      .then((data: Track[]) => data)
+      .then((data) => {
+        const promises: Promise<Tag[]>[] = data.map((item) =>
+          fetchTagsNames(item.artist.name, item.name).then((data) => data)
+        );
 
-    Promise.resolve(artists).then((data) => {
-      let promises: Promise<Tag[]>[] = [];
-
-      data.map((item) => {
-        promises.push(fetchTagsNames(item.artist.name, item.name).then((data) => data));
+        Promise.all(promises).then((tags) => {
+          data.map((_, index) => (data[index].tags = tags[index]));
+          setData(data);
+        });
       });
-
-      Promise.all(promises).then((tags) => {
-        data.map((_, index) => (data[index].tags = tags[index]));
-        setData(data);
-      });
-    });
   }, []);
 
   return (
@@ -30,7 +29,7 @@ const PopularSection = () => {
         {data.map((item, index) => {
           return (
             <div className="popular-item" key={index}>
-              {PopularItem(item)}
+              <PopularItem track={item} />
             </div>
           );
         })}

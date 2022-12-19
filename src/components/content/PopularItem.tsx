@@ -2,25 +2,25 @@ import React from "react";
 import { Tag, Track } from "../API";
 import TagItem from "../TagItem";
 
-const PopularItem = (track: Track) => {
+interface PopularItemProps {
+  track: Track;
+}
+
+const PopularItem = (props: PopularItemProps) => {
   return (
     <>
-      <img className="popular-item-image" src={track.image} />
+      <img className="popular-item-image" src={props.track.image} />
       <div className="popular-item-wrapper">
-        <a className="content-link content-title" href={track.name}>
-          {track.name}
+        <a className="content-link content-title" href={`${props.track.url}`}>
+          {props.track.name}
         </a>
-        <a className="content-link content-sub-title" href={track.artist.name}>
-          {track.artist.name}
+        <a className="content-link content-sub-title" href={`${props.track.artist.url}`}>
+          {props.track.artist.name}
         </a>
 
-        <ul id={`${track.artist.name}&${track.name}`} className="popular-track-tags">
-          {track.tags?.map((item: Tag, index) => {
-            return (
-              <React.Fragment key={index}>
-                <TagItem tag={item} last={index === 2} />
-              </React.Fragment>
-            );
+        <ul id={`${props.track.artist.name}&${props.track.name}`} className="popular-track-tags">
+          {props.track.tags?.map((item: Tag, index) => {
+            return <TagItem key={`popular-item-tag-${index}`} tag={item} last={index === 2} />;
           })}
         </ul>
       </div>

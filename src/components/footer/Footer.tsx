@@ -2,6 +2,8 @@ import React from "react";
 import FooterLinksItem from "./FooterLinksItem";
 import { useState } from "react";
 
+import "./footer.css";
+
 const Footer = () => {
   const langs = [
     "English",
@@ -36,7 +38,7 @@ const Footer = () => {
       const style = `footer-lang-item ${selected === index ? "footer-lang-item-selected" : ""}`;
 
       return (
-        <a key={index} href="#" className={style} onClick={() => setLang(index)}>
+        <a key={`$footer-lang-${index}`} href="#" className={style} onClick={() => setLang(index)}>
           {item}
         </a>
       );
@@ -46,7 +48,7 @@ const Footer = () => {
   const Policies = (policies: string[]) => {
     return policies.map((item, index) => {
       return (
-        <React.Fragment key={index}>
+        <React.Fragment key={`policies-${index}`}>
           <a className="footer-link-sm" href="#">
             {item}
           </a>

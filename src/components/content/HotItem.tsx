@@ -2,21 +2,21 @@ import React from "react";
 import { Artist, Tag } from "../API";
 import TagItem from "../TagItem";
 
-const HotItem = (artist: Artist) => {
+interface HotItemProps {
+  artist: Artist;
+}
+
+const HotItem = (props: HotItemProps) => {
   return (
     <>
-      <img className="hot-item-image" src={`${artist.image}`} />
+      <img className="hot-item-image" src={props.artist.image} />
       <div className="hot-item-wrapper">
-        <a className="content-link content-title" href={`${artist.url}`}>
-          {artist.name}
+        <a className="content-link content-title" href={`${props.artist.url}`}>
+          {props.artist.name}
         </a>
-        <ul id={`${artist.mbid}`} className="hot-artist-tags">
-          {artist.tags?.map((item: Tag, index) => {
-            return (
-              <React.Fragment key={index}>
-                <TagItem tag={item} last={index === 2} />
-              </React.Fragment>
-            );
+        <ul id={`${props.artist.mbid}`} className="hot-artist-tags">
+          {props.artist.tags?.map((item: Tag, index) => {
+            return <TagItem key={`hot-item-tag-${index}`} tag={item} last={index === 2} />;
           })}
         </ul>
       </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import { capitalize } from "../API";
 
+import "./search.css";
+
 interface SearchSectionProps {
   name: string;
   text: string;

@@ -1,13 +1,14 @@
 import Header from "./components/header/Header";
 import Main from "./components/content/Main";
 import Footer from "./components/footer/Footer";
+import { KEY } from "./key";
 
 import { useState } from "react";
 
 const App = () => {
   const [search, setSearch] = useState<string>("");
 
-  const URL = "http://www.last.fm/api/auth/?api_key=fc7e1572ebc98d1718f5aba67915fe76";
+  const URL = `http://www.last.fm/api/auth/?api_key=${KEY}`;
 
   // FIXME: Ugly solution to token generation will be fixed later using react. Maybe.
   if (!window.location.href.includes("token=")) {
@@ -21,7 +22,7 @@ const App = () => {
           if (value) setSearch(value);
         }}
       />
-      <Main isSearch={search !== ""} text={search} />
+      <Main search={search} />
       <Footer />
     </div>
   );

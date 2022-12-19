@@ -9,24 +9,11 @@ const FooterLinksItem = (props: FooterLinksItemProps) => {
       <span className="footer-link-title">{props.title}</span>
       {props.links.map((item, index) => {
         return (
-          <a key={index} className="footer-link" href="#">
+          <a key={`footer-link-${index}`} className="footer-link" href="#">
             {item}
           </a>
         );
       })}
-
-      {/* <a className="footer-link" href="#">
-        Facebook
-      </a>
-      <a className="footer-link" href="#">
-        Twitter
-      </a>
-      <a className="footer-link" href="#">
-        Instagram
-      </a>
-      <a className="footer-link" href="#">
-        YouTube
-      </a> */}
     </div>
   );
 };
